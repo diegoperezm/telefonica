@@ -6,8 +6,8 @@ public class ClientMapper {
         String firstName = client.getFirstName();
         String lastName  = client.getLastName();
         String run       = client.getRun();
-        String address   = client.getAddress();
+        Address address   = client.getAddress();
 
-        return new ClientDTO();
+        return new ClientDTO(firstName, lastName, run, address);
     }
 }

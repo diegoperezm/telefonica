@@ -11,5 +11,5 @@ public class ClientDTO {
     private String firstName;
     private String lastName;
     private String run;
-    private String address;
+    private Address address;
 }

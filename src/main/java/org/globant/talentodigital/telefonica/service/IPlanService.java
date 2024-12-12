@@ -5,5 +5,6 @@ import org.globant.talentodigital.telefonica.model.Plan;
 import java.util.List;
 
 public interface IPlanService {
-    public List<Plan> findAllPlan();
+  public List<Plan> findAllPlans();
+
 }

@@ -4,12 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 public class PlanDTO {
-    private String firstName;
-    private String lastName;
-    private String run;
-    private String address;
+    private String planName;
+    private BigDecimal price;
 }

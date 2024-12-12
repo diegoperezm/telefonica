@@ -1,8 +1,8 @@
 package org.globant.talentodigital.telefonica.restController;
 
 import lombok.RequiredArgsConstructor;
-import org.globant.talentodigital.telefonica.model.ClientMapper;
 import org.globant.talentodigital.telefonica.model.PlanDTO;
+import org.globant.talentodigital.telefonica.model.PlanMapper;
 import org.globant.talentodigital.telefonica.service.PlanService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
