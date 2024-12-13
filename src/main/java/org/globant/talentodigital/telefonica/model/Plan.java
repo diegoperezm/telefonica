@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Entity
 @Data
@@ -17,10 +18,17 @@ public class Plan {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "nombre_plan")
+    //@Column(name = "nombre_plan")
     private String planName;
 
-    @Column(name = "precio")
+    //@Column(name = "precio")
     private BigDecimal price;
+
+    @Enumerated(EnumType.STRING)
+    private ServiceType serviceType;
+
+    @OneToMany(mappedBy = "plan")
+    private List<Contract> contract;
+
 
 }

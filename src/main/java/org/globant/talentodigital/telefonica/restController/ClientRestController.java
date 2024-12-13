@@ -5,6 +5,7 @@ import org.globant.talentodigital.telefonica.model.Client;
 import org.globant.talentodigital.telefonica.model.ClientDTO;
 import org.globant.talentodigital.telefonica.model.ClientMapper;
 import org.globant.talentodigital.telefonica.service.ClientService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,9 +19,8 @@ import static java.util.stream.Collectors.toList;
 @RequestMapping("/api/clients")
 public class ClientRestController {
 
+    @Autowired
     private final ClientService clientService;
-
-
 
     @PostMapping("/create")
     public ResponseEntity<Client> createClient(@RequestBody Client client) {
@@ -28,7 +28,7 @@ public class ClientRestController {
         return new ResponseEntity<>(savedClient, HttpStatus.CREATED);
     }
 
-    @GetMapping("/all")
+    @GetMapping("/")
     public ResponseEntity<List<ClientDTO>> getAllClients() {
         List<ClientDTO> clients = clientService
                 .findAllClients()

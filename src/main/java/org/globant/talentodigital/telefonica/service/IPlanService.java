@@ -6,5 +6,6 @@ import java.util.List;
 
 public interface IPlanService {
   public List<Plan> findAllPlans();
+  public Plan createPlan(Plan plan);
 
 }

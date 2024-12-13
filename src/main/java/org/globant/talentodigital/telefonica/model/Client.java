@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name = "client")
@@ -33,6 +34,9 @@ public class Client {
 
     //@Column(name = "fecha_nacimiento")
     private LocalDate dateOfBirth;
+
+    @OneToMany(mappedBy = "cliente")
+    private List<Contract> contract;
 
 }
 

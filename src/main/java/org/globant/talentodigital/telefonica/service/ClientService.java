@@ -23,6 +23,7 @@ public class ClientService implements IClientService{
     @Override
     public List<Client> findClientByPlan() {
         return clientRepository.findAll();
+        // return clientRepository.getReferenceById();
     }
 
     @Override
@@ -30,6 +31,7 @@ public class ClientService implements IClientService{
         return null;
     }
 
+    @Transactional
     public Client createClient(Client client) {
         return clientRepository.save(client);
     }
