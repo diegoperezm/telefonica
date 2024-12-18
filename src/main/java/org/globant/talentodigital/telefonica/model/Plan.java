@@ -2,8 +2,10 @@ package org.globant.talentodigital.telefonica.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -13,6 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name="plan")
+@SuperBuilder
 public class Plan {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,8 +30,8 @@ public class Plan {
     @Enumerated(EnumType.STRING)
     private ServiceType serviceType;
 
-    @OneToMany(mappedBy = "plan")
-    private List<Contract> contract;
+//    @OneToMany(mappedBy = "plan")
+//    private List<Contract> contract;
 
 
 }

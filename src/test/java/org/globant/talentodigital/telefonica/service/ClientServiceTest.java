@@ -13,7 +13,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import java.util.Optional;
 
 public class ClientServiceTest {
 
@@ -27,7 +26,7 @@ public class ClientServiceTest {
 
     @BeforeEach
     public void setUp() {
-        MockitoAnnotations.openMocks(this);
+//        MockitoAnnotations.openMocks(this);
         client = new Client();
         client.setId(1L);
         client.setFirstName("Juan");

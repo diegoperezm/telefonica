@@ -30,7 +30,7 @@ public class PlanRestController {
         return ResponseEntity.ok(plans);
     }
 
-    // solo por ahora, devolver la entidad
+    // FIX
     @PostMapping("/create")
     public ResponseEntity<Plan> createPlan(@RequestBody Plan plan) {
         Plan savedPlan = planService.createPlan(plan);

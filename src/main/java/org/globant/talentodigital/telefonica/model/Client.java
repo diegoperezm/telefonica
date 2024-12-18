@@ -35,7 +35,7 @@ public class Client {
     //@Column(name = "fecha_nacimiento")
     private LocalDate dateOfBirth;
 
-    @OneToMany(mappedBy = "cliente")
+    @OneToMany(mappedBy = "client")
     private List<Contract> contract;
 
 }
