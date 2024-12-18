@@ -16,16 +16,14 @@ public class Contract {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private LocalDate startDate;
+    private LocalDate terminationDate;
+    private boolean active;
+
     @ManyToOne
-    @JoinColumn(name = "client_id", nullable = false)
     private Client client;
 
     @ManyToOne
-    @JoinColumn(name = "plan_id", nullable = false)
     private Plan plan;
-
-    private LocalDate startDate;
-    private LocalDate terminationDate;
-    private boolean   active ;
 
 }

@@ -14,24 +14,18 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name="plan")
+@Table(name = "plan")
 @SuperBuilder
 public class Plan {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    //@Column(name = "nombre_plan")
     private String planName;
-
-    //@Column(name = "precio")
     private BigDecimal price;
 
     @Enumerated(EnumType.STRING)
     private ServiceType serviceType;
-
-//    @OneToMany(mappedBy = "plan")
-//    private List<Contract> contract;
 
 
 }

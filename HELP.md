@@ -19,9 +19,9 @@ Considere crear una entidad de Contrato para representar la relación de las dos
 para esta utilice la información que crea necesaria para el contrato.
 
 Requerimientos:
-  * Listar todos los planes.
-  * Listar todos los clientes, sin el detalle de sus planes.
-  * Listar un cliente con el detalle de sus planes.
+  * [X] Listar todos los planes. 
+  * [X] Listar todos los clientes, sin el detalle de sus planes.
+  * [X] Listar un cliente con el detalle de sus planes.
   * Contratar planes.
   * Desactivar planes.
   * Desactivar clientes.

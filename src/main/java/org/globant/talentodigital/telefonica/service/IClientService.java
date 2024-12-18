@@ -3,6 +3,7 @@ package org.globant.talentodigital.telefonica.service;
 import org.globant.talentodigital.telefonica.model.Client;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface IClientService {
 
@@ -10,5 +11,5 @@ public interface IClientService {
 
     public List<Client> findClientByPlan();
 
-    public Client findClientById(int id);
+    public Optional<Client> findClientById(Long id);
 }

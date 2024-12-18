@@ -5,4 +5,9 @@ public enum ServiceType {
     TELEVISION,
     TELEFONIA,
     MOVIL,
+    BASIC,
+    STANDARD,
+    PREMIUM,
+    FAMILY,
+    BUSINESS
 }

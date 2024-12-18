@@ -21,7 +21,7 @@ public class PlanRestController {
 
     private final PlanService planService;
 
-    @GetMapping("/")
+    @GetMapping()
     public ResponseEntity<List<PlanDTO>> getAllPlans() {
         List<PlanDTO> plans = planService
                 .findAllPlans()

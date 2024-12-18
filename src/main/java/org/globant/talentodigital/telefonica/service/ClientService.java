@@ -7,6 +7,7 @@ import org.globant.talentodigital.telefonica.repository.ClientRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @AllArgsConstructor
@@ -23,12 +24,11 @@ public class ClientService implements IClientService{
     @Override
     public List<Client> findClientByPlan() {
         return clientRepository.findAll();
-        // return clientRepository.getReferenceById();
     }
 
     @Override
-    public Client findClientById(int id) {
-        return null;
+    public Optional<Client> findClientById(Long id) {
+        return clientRepository.findById(id);
     }
 
     @Transactional
