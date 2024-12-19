@@ -1,8 +1,9 @@
-package org.globant.talentodigital.telefonica.service;
+package org.globant.talentodigital.telefonica.service.impl;
 
 import lombok.AllArgsConstructor;
 import org.globant.talentodigital.telefonica.model.Contract;
 import org.globant.talentodigital.telefonica.repository.ContractRepository;
+import org.globant.talentodigital.telefonica.service.IContractService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

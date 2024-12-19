@@ -1,4 +1,10 @@
-package org.globant.talentodigital.telefonica.model;
+package org.globant.talentodigital.telefonica.mapper;
+
+import org.globant.talentodigital.telefonica.dto.ClientWithPlansDTO;
+import org.globant.talentodigital.telefonica.dto.PlanDTO;
+import org.globant.talentodigital.telefonica.model.Address;
+import org.globant.talentodigital.telefonica.model.Client;
+import org.globant.talentodigital.telefonica.model.Plan;
 
 import java.util.ArrayList;
 import java.util.List;

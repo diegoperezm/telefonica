@@ -1,11 +1,10 @@
 package org.globant.talentodigital.telefonica.restController;
 
 import lombok.RequiredArgsConstructor;
-import org.globant.talentodigital.telefonica.model.Client;
 import org.globant.talentodigital.telefonica.model.Plan;
-import org.globant.talentodigital.telefonica.model.PlanDTO;
-import org.globant.talentodigital.telefonica.model.PlanMapper;
-import org.globant.talentodigital.telefonica.service.PlanService;
+import org.globant.talentodigital.telefonica.dto.PlanDTO;
+import org.globant.talentodigital.telefonica.mapper.PlanMapper;
+import org.globant.talentodigital.telefonica.service.impl.PlanService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -30,12 +29,10 @@ public class PlanRestController {
         return ResponseEntity.ok(plans);
     }
 
-    // FIX
     @PostMapping("/create")
-    public ResponseEntity<Plan> createPlan(@RequestBody Plan plan) {
-        Plan savedPlan = planService.createPlan(plan);
-        return new ResponseEntity<>(savedPlan, HttpStatus.CREATED);
+    public ResponseEntity<Void> createPlan(@RequestBody Plan plan) {
+        planService.createPlan(plan);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
-
 
 }

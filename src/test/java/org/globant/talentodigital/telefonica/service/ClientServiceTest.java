@@ -2,6 +2,7 @@ package org.globant.talentodigital.telefonica.service;
 
 import org.globant.talentodigital.telefonica.model.Client;
 import org.globant.talentodigital.telefonica.repository.ClientRepository;
+import org.globant.talentodigital.telefonica.service.impl.ClientService;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -11,7 +12,6 @@ import static org.mockito.Mockito.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 
 
 public class ClientServiceTest {

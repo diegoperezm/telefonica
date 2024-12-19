@@ -1,4 +1,7 @@
-package org.globant.talentodigital.telefonica.model;
+package org.globant.talentodigital.telefonica.mapper;
+
+import org.globant.talentodigital.telefonica.dto.PlanDTO;
+import org.globant.talentodigital.telefonica.model.Plan;
 
 import java.math.BigDecimal;
 

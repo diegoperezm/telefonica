@@ -1,15 +1,16 @@
-package org.globant.talentodigital.telefonica.service;
+package org.globant.talentodigital.telefonica.service.impl;
 
 import lombok.AllArgsConstructor;
 import org.globant.talentodigital.telefonica.model.Plan;
 import org.globant.talentodigital.telefonica.repository.PlanRepository;
+import org.globant.talentodigital.telefonica.service.IPlanService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 @AllArgsConstructor
-public class PlanService implements  IPlanService{
+public class PlanService implements IPlanService {
 
    private PlanRepository planRepository;
 

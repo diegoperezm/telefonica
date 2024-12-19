@@ -1,4 +1,4 @@
-package org.globant.talentodigital.telefonica.model;
+package org.globant.talentodigital.telefonica.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

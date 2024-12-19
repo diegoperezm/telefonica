@@ -1,9 +1,13 @@
 package org.globant.talentodigital.telefonica.restController;
 
 import lombok.RequiredArgsConstructor;
+import org.globant.talentodigital.telefonica.dto.ClientDTO;
+import org.globant.talentodigital.telefonica.dto.ClientWithPlansDTO;
+import org.globant.talentodigital.telefonica.mapper.ClientMapper;
+import org.globant.talentodigital.telefonica.mapper.ClientWithPlansMapper;
 import org.globant.talentodigital.telefonica.model.*;
-import org.globant.talentodigital.telefonica.service.ClientService;
-import org.globant.talentodigital.telefonica.service.ContractService;
+import org.globant.talentodigital.telefonica.service.impl.ClientService;
+import org.globant.talentodigital.telefonica.service.impl.ContractService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,12 +31,6 @@ public class ClientRestController {
     private final ContractService contractService;
 
 
-    @PostMapping("/create")
-    public ResponseEntity<Client> createClient(@RequestBody Client client) {
-        Client savedClient = clientService.createClient(client);
-        return new ResponseEntity<>(savedClient, HttpStatus.CREATED);
-    }
-
     @GetMapping()
     public ResponseEntity<List<ClientDTO>> getAllClients() {
         List<ClientDTO> clients = clientService
@@ -51,7 +49,7 @@ public class ClientRestController {
         List<Plan> plans = new ArrayList<>();
 
         for (Contract contract : contracts) {
-            if(contract.getPlan() != null) {
+            if (contract.getPlan() != null) {
                 plans.add(contract.getPlan());
             }
         }
@@ -65,5 +63,16 @@ public class ClientRestController {
     }
 
 
+    @PostMapping("/create")
+    public ResponseEntity<Void> createClient(@RequestBody Client client) {
+        clientService.createClient(client);
+        return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
+    @PatchMapping("/deactivate/{id}")
+    public ResponseEntity<Void> deactivateClient(@PathVariable("id") Long id) {
+        contractService.deactivateAllContractsByClient(id);
+        return ResponseEntity.noContent().build();
+    }
 
 }
