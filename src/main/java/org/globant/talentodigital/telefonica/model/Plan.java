@@ -2,20 +2,18 @@ package org.globant.talentodigital.telefonica.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
 import java.math.BigDecimal;
-import java.util.List;
 
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "plan")
-@SuperBuilder
+//@SuperBuilder
 public class Plan {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

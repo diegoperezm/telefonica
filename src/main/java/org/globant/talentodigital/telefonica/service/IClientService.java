@@ -15,5 +15,5 @@ public interface IClientService {
 
     boolean existsById(Long clientId);
 
-    Optional<Object> findById(Long clientId);
+    Optional<Client> findById(Long clientId);
 }

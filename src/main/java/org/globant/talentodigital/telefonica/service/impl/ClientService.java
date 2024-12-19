@@ -38,8 +38,8 @@ public class ClientService implements IClientService {
     }
 
     @Override
-    public Optional<Object> findById(Long clientId) {
-        return Optional.of(clientRepository.findById(clientId));
+    public Optional<Client> findById(Long clientId) {
+        return clientRepository.findById(clientId);
     }
 
     @Transactional

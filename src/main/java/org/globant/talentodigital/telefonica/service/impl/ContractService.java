@@ -5,8 +5,6 @@ import lombok.AllArgsConstructor;
 import org.globant.talentodigital.telefonica.model.Client;
 import org.globant.talentodigital.telefonica.model.Contract;
 import org.globant.talentodigital.telefonica.model.Plan;
-import org.globant.talentodigital.telefonica.service.impl.PlanService;
-import org.globant.talentodigital.telefonica.service.impl.ClientService;
 import org.globant.talentodigital.telefonica.repository.ContractRepository;
 import org.globant.talentodigital.telefonica.service.IContractService;
 import org.springframework.stereotype.Service;
@@ -43,9 +41,8 @@ public class ContractService implements IContractService {
 
     public void createContract(Long clientId, Long planId) {
 
-        Client client =  clientService.findById(clientId);
+        Client client =  clientService.findClientById(clientId)
                 .orElseThrow(() -> new EntityNotFoundException("Client with id " + clientId + " not found"));
-
 
         Plan plan = planService.findById(planId)
                 .orElseThrow(() -> new EntityNotFoundException("Plan with id " + planId + " not found"));

@@ -15,7 +15,6 @@ public class PlanService implements IPlanService {
 
    private PlanRepository planRepository;
 
-   // FIX getAllPlans ?
     @Override
     public List<Plan> findAllPlans() {
         return planRepository.findAll();
