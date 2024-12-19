@@ -22,9 +22,9 @@ Requerimientos:
   * [X] Listar todos los planes. 
   * [X] Listar todos los clientes, sin el detalle de sus planes.
   * [X] Listar un cliente con el detalle de sus planes.
-  * Contratar planes.
+  * [X] Contratar planes.
   * Desactivar planes.
-  * Desactivar clientes.
+  * [X] Desactivar clientes.
   * Los clientes pueden acceder a descuentos desde el segundo plan que contraten 
   * Considere los test unitarios de la aplicación 
   * Utilice JPA y una base de datos H2 para el desarrollo de la solución

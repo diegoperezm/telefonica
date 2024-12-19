@@ -32,6 +32,16 @@ public class ClientService implements IClientService {
         return clientRepository.findById(id);
     }
 
+    @Override
+    public boolean existsById(Long clientId) {
+        return clientRepository.existsById(clientId);
+    }
+
+    @Override
+    public Optional<Object> findById(Long clientId) {
+        return Optional.of(clientRepository.findById(clientId));
+    }
+
     @Transactional
     public Client createClient(Client client) {
         return clientRepository.save(client);

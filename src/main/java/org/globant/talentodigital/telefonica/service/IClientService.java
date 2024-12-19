@@ -12,4 +12,8 @@ public interface IClientService {
     public List<Client> findClientByPlan();
 
     public Optional<Client> findClientById(Long id);
+
+    boolean existsById(Long clientId);
+
+    Optional<Object> findById(Long clientId);
 }
