@@ -17,18 +17,13 @@ public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String firstName;
-
     private String lastName;
-
     private String run;
-
     private LocalDate dateOfBirth;
 
     @OneToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     private Address address;
-
 }
 
 

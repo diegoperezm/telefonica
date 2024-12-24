@@ -18,12 +18,9 @@ public class Plan {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String planName;
     private BigDecimal price;
 
     @Enumerated(EnumType.STRING)
     private ServiceType serviceType;
-
-
 }

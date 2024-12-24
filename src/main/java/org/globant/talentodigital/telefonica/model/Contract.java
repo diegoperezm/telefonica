@@ -15,14 +15,11 @@ public class Contract {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private LocalDate startDate;
     private LocalDate terminationDate;
     private boolean active;
-
     @ManyToOne
     private Client client;
-
     @ManyToOne
     private Plan plan;
 
