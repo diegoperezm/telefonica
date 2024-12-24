@@ -25,35 +25,24 @@ public class ContractService implements IContractService {
         return contractRepository.findAllByClientId(clientId);
     }
 
-    @Override
-    public void deactivateAllContractsByClient(Long clientId) {
-        List<Contract> contracts = contractRepository.findAllByClientId(clientId);
-
-        for (Contract contract : contracts) {
-            contract.setActive(false);
-        }
-        contractRepository.saveAll(contracts);
-    }
 
     public List<Contract> findAlL() {
         return contractRepository.findAll();
     }
 
     public void createContract(Long clientId, Long planId) {
-
-        Client client =  clientService.findClientById(clientId)
+        LocalDate date = LocalDate.now();
+        Client client = clientService.findClientById(clientId)
                 .orElseThrow(() -> new EntityNotFoundException("Client with id " + clientId + " not found"));
 
         Plan plan = planService.findById(planId)
                 .orElseThrow(() -> new EntityNotFoundException("Plan with id " + planId + " not found"));
-
-
         Contract contract = new Contract();
+        contract.setActive(true);
         contract.setClient(client);
         contract.setPlan(plan);
-        contract.setStartDate(LocalDate.now());
-        contract.setTerminationDate(null);
-        contract.setActive(true);
+        contract.setStartDate(date);
+        contract.setTerminationDate(date.plusYears(1));
 
         contractRepository.save(contract);
     }

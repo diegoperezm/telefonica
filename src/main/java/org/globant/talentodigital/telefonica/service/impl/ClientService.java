@@ -3,7 +3,9 @@ package org.globant.talentodigital.telefonica.service.impl;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.globant.talentodigital.telefonica.model.Client;
+import org.globant.talentodigital.telefonica.model.Contract;
 import org.globant.talentodigital.telefonica.repository.ClientRepository;
+import org.globant.talentodigital.telefonica.repository.ContractRepository;
 import org.globant.talentodigital.telefonica.service.IClientService;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -18,15 +20,27 @@ import java.util.Optional;
 public class ClientService implements IClientService {
 
     private final ClientRepository clientRepository;
+    private final ContractRepository contractRepository;
 
     @Override
     public List<Client> findAllClients() {
         try {
             return clientRepository.findAll();
         } catch (Exception e) {
-          throw e;
+          throw new RuntimeException(e);
         }
     }
+
+    @Override
+    public void deactivateAllContractsByClient(Long clientId) {
+        List<Contract> contracts = contractRepository.findAllByClientId(clientId);
+
+        for (Contract contract : contracts) {
+            contract.setActive(false);
+        }
+        contractRepository.saveAll(contracts);
+    }
+
 
     @Override
     public List<Client> findClientByPlan() {

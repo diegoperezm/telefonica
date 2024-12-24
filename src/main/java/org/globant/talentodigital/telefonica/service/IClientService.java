@@ -13,4 +13,5 @@ public interface IClientService {
     boolean existsById(Long clientId);
     Optional<Client> findById(Long clientId);
     Client createClient(Client client);
+    void deactivateAllContractsByClient(Long ClienId);
 }

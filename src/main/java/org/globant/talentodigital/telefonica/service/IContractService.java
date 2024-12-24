@@ -5,8 +5,6 @@ import org.globant.talentodigital.telefonica.model.Contract;
 import java.util.List;
 
 public interface IContractService {
-    public List<Contract> findAllByClientId(Long clientId);
-     public void deactivateAllContractsByClient(Long ClienId);
-
+    List<Contract> findAllByClientId(Long clientId);
     void createContract(Long clientId, Long planId);
 }

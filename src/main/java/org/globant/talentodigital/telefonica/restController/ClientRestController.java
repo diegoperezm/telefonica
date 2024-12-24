@@ -54,7 +54,8 @@ public class ClientRestController {
         }
 
         if (optionalClient.isPresent()) {
-            ClientWithPlansDTO clientWithPlansDTO = ClientWithPlansMapper.toDto(optionalClient.get(), plans);
+            ClientWithPlansDTO clientWithPlansDTO = ClientWithPlansMapper
+                                                     .toDto(optionalClient.get(), plans);
             return ResponseEntity.ok(clientWithPlansDTO);
         } else {
             return ResponseEntity.notFound().build();
@@ -70,7 +71,7 @@ public class ClientRestController {
 
     @PatchMapping("/deactivate/{id}")
     public ResponseEntity<Void> deactivateClient(@PathVariable("id") Long id) {
-        contractService.deactivateAllContractsByClient(id);
+        clientService.deactivateAllContractsByClient(id);
         return ResponseEntity.noContent().build();
     }
 
