@@ -7,13 +7,10 @@ import java.util.Optional;
 
 public interface IClientService {
 
-    public List<Client> findAllClients();
-
-    public List<Client> findClientByPlan();
-
-    public Optional<Client> findClientById(Long id);
-
+    List<Client> findAllClients();
+    List<Client> findClientByPlan();
+    Optional<Client> findClientById(Long id);
     boolean existsById(Long clientId);
-
     Optional<Client> findById(Long clientId);
+    Client createClient(Client client);
 }

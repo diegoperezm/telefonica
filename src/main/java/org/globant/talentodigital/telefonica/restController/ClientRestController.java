@@ -1,14 +1,15 @@
 package org.globant.talentodigital.telefonica.restController;
 
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 import org.globant.talentodigital.telefonica.dto.ClientDTO;
 import org.globant.talentodigital.telefonica.dto.ClientWithPlansDTO;
 import org.globant.talentodigital.telefonica.mapper.ClientMapper;
 import org.globant.talentodigital.telefonica.mapper.ClientWithPlansMapper;
-import org.globant.talentodigital.telefonica.model.*;
-import org.globant.talentodigital.telefonica.service.impl.ClientService;
-import org.globant.talentodigital.telefonica.service.impl.ContractService;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.globant.talentodigital.telefonica.model.Client;
+import org.globant.talentodigital.telefonica.model.Contract;
+import org.globant.talentodigital.telefonica.model.Plan;
+import org.globant.talentodigital.telefonica.service.IClientService;
+import org.globant.talentodigital.telefonica.service.IContractService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,24 +20,22 @@ import java.util.Optional;
 
 import static java.util.stream.Collectors.toList;
 
-@RequiredArgsConstructor
+@AllArgsConstructor
 @RestController
 @RequestMapping("/api/clients")
 public class ClientRestController {
+    private final IClientService clientService;
+    private final IContractService contractService;
 
-    @Autowired
-    private final ClientService clientService;
-
-    @Autowired
-    private final ContractService contractService;
-
-
-    @GetMapping()
+    @GetMapping("/")
     public ResponseEntity<List<ClientDTO>> getAllClients() {
         List<ClientDTO> clients = clientService
                 .findAllClients()
                 .stream().map(ClientMapper::toDto).collect(toList());
 
+        if (clients.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
         return ResponseEntity.ok(clients);
     }
 

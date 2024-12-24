@@ -5,7 +5,9 @@ import lombok.AllArgsConstructor;
 import org.globant.talentodigital.telefonica.model.Client;
 import org.globant.talentodigital.telefonica.repository.ClientRepository;
 import org.globant.talentodigital.telefonica.service.IClientService;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 import java.util.List;
 import java.util.Optional;
@@ -19,7 +21,11 @@ public class ClientService implements IClientService {
 
     @Override
     public List<Client> findAllClients() {
-        return clientRepository.findAll();
+        try {
+            return clientRepository.findAll();
+        } catch (Exception e) {
+          throw e;
+        }
     }
 
     @Override
@@ -43,6 +49,7 @@ public class ClientService implements IClientService {
     }
 
     @Transactional
+    @ResponseStatus(HttpStatus.CREATED)
     public Client createClient(Client client) {
         return clientRepository.save(client);
     }

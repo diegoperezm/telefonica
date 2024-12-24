@@ -16,5 +16,4 @@ public class ClientWithPlansDTO {
     private String run;
     private Address address;
     private List<PlanDTO> plans;
-
 }
