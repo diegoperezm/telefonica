@@ -7,9 +7,11 @@ import org.globant.talentodigital.telefonica.model.Contract;
 import org.globant.talentodigital.telefonica.repository.ClientRepository;
 import org.globant.talentodigital.telefonica.repository.ContractRepository;
 import org.globant.talentodigital.telefonica.service.IClientService;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.servlet.resource.NoResourceFoundException;
 
 import java.util.List;
 import java.util.Optional;
@@ -27,18 +29,25 @@ public class ClientService implements IClientService {
         try {
             return clientRepository.findAll();
         } catch (Exception e) {
-          throw new RuntimeException(e);
+            throw new RuntimeException(e);
         }
     }
 
     @Override
-    public void deactivateAllContractsByClient(Long clientId) {
+    public void deactivateAllContractsByClient(Long clientId) throws NoResourceFoundException {
         List<Contract> contracts = contractRepository.findAllByClientId(clientId);
+
+        if (contracts.isEmpty()) {
+            throw  new NoResourceFoundException(HttpMethod.GET, "Client not found");
+        }
 
         for (Contract contract : contracts) {
             contract.setActive(false);
         }
+
         contractRepository.saveAll(contracts);
+
+
     }
 
 

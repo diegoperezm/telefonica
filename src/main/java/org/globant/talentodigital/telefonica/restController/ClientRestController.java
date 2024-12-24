@@ -13,6 +13,7 @@ import org.globant.talentodigital.telefonica.service.IContractService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.resource.NoResourceFoundException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -70,7 +71,7 @@ public class ClientRestController {
     }
 
     @PatchMapping("/deactivate/{id}")
-    public ResponseEntity<Void> deactivateClient(@PathVariable("id") Long id) {
+    public ResponseEntity<Void> deactivateClient(@PathVariable("id") Long id) throws NoResourceFoundException {
         clientService.deactivateAllContractsByClient(id);
         return ResponseEntity.noContent().build();
     }
