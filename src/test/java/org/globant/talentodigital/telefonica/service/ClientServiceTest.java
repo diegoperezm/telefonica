@@ -63,6 +63,14 @@ public class ClientServiceTest {
       List<Client> result = clientService.findAllClients();
       assertEquals(0, result.size());
     }
+
+    @Test
+    void findAllClients_List_Size_Two() {
+        when(clientRepository.findAll()).thenReturn(List.of(client_1,client_2));
+        List<Client> result = clientService.findAllClients();
+        assertEquals(2, result.size());
+    }
+
 }
 
 
