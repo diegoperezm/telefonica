@@ -15,6 +15,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.List;
+
 @ExtendWith(MockitoExtension.class)
 public class ClientServiceTest {
 
@@ -55,6 +57,12 @@ public class ClientServiceTest {
         assertNotNull(result);
     }
 
+    @Test
+    void findAllClients_Empty_List() {
+      when(clientRepository.findAll()).thenReturn(List.of());
+      List<Client> result = clientService.findAllClients();
+      assertEquals(0, result.size());
+    }
 }
 
 
