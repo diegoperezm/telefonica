@@ -23,25 +23,26 @@ public class ClientServiceTest {
 
     @InjectMocks
     private ClientService clientService;
+    private Client client_1;
+    private Client client_2;
 
-    private Client client;
     @BeforeEach
     public void setUp() {
-    //MockitoAnnotations.openMocks(this);
-    client = new Client();
-    client.setId(1L);
-        client.setFirstName("Juan");
-        client.setLastName("Perez");
-        client.setRun("123456789-9");
+    client_1 = new Client();
+    client_1.setId(1L);
+        client_1.setFirstName("Juan");
+        client_1.setLastName("Perez");
+        client_1.setRun("123456789-9");
     }
+
     @Test
-    public void testCrearClient() {
-        when(clientRepository.save(any(Client.class))).thenReturn(client);
-        //Client result = clientService.createClient(client);
-        //assertNotNull(result);
-        //assertEquals("Juan", result.getFirstName());
-        verify(clientRepository, times(1)).save(client);
+    void testCreateClient_NotNull() {
+        when(clientRepository.save(any(Client.class))).thenReturn(client_1);
+        Client result = clientService.createClient(client_1);
+        assertNotNull(result);
    }
+
+
 
 }
 
