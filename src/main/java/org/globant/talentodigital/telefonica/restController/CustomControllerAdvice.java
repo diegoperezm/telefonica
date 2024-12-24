@@ -10,49 +10,40 @@ import org.springframework.dao.InvalidDataAccessApiUsageException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.servlet.resource.NoResourceFoundException;
 
-import java.time.LocalDateTime;
-import java.util.HashMap;
-import java.util.Map;
+import java.time.LocalDate;
 
 @ControllerAdvice
 @Builder
 public class CustomControllerAdvice {
 
-
-
     @ExceptionHandler(NoResourceFoundException.class)
-    public ResponseEntity<Map<String, Object>> handleNoResourceNotFoundException(NoResourceFoundException ex) {
-        Map<String, Object> response = new HashMap<>();
+    public ResponseEntity<ExceptionMessage> handleResourceNotFoundException(NoResourceFoundException ex) {
+        ExceptionMessage exceptionMessage = new ExceptionMessage();
+        exceptionMessage.setStatusCode(ex.getStatusCode().value());
+        exceptionMessage.setTimestamp(LocalDate.now());
+        exceptionMessage.setMessage(ex.getMessage());
 
-               response.put("timestamp",LocalDateTime.now());
-               response.put("status",HttpStatus.NOT_FOUND.value());
-               response.put("error","Not Found");
-               response.put("message",ex.getMessage());
-               response.put("trace",ex.getClass().getName());
-
-        return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(exceptionMessage, HttpStatus.NOT_FOUND);
     }
 
     @ExceptionHandler(TransientObjectException.class)
-    public ResponseEntity<Map<String, Object>> handleTransientObjectException(TransientObjectException ex) {
-        Map<String, Object> response = new HashMap<>();
-        response.put("timestamp", LocalDateTime.now());
-        response.put("status", HttpStatus.INTERNAL_SERVER_ERROR.value());
-        response.put("error", "Internal Server Error");
-        response.put("message", "A transient object was referenced that is not saved: " + ex.getMessage());
+    public ResponseEntity<ExceptionMessage> handleTransientObjectException(TransientObjectException ex) {
+        ExceptionMessage exceptionMessage = new ExceptionMessage();
+        exceptionMessage.setStatusCode(HttpStatus.INTERNAL_SERVER_ERROR.value());
+        exceptionMessage.setTimestamp(LocalDate.now());
+        exceptionMessage.setMessage(ex.getMessage());
 
-        return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>(exceptionMessage, HttpStatus.NOT_FOUND);
     }
 
     @ExceptionHandler(InvalidDataAccessApiUsageException.class)
-    public ResponseEntity<Map<String, Object>> handleInvalidDataAccessApiUsageException(InvalidDataAccessApiUsageException ex) {
-        Map<String, Object> response = new HashMap<>();
-        response.put("timestamp", LocalDateTime.now());
-        response.put("status", HttpStatus.INTERNAL_SERVER_ERROR.value());
-        response.put("error", "Internal Server Error");
-        response.put("message", "Invalid data access: " + ex.getMessage());
+    public ResponseEntity<ExceptionMessage> handleInvalidDataAccessApiUsageException(InvalidDataAccessApiUsageException ex) {
+        ExceptionMessage exceptionMessage = new ExceptionMessage();
+        exceptionMessage.setStatusCode(HttpStatus.INTERNAL_SERVER_ERROR.value());
+        exceptionMessage.setTimestamp(LocalDate.now());
+        exceptionMessage.setMessage(ex.getMessage());
 
-        return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>(exceptionMessage, HttpStatus.NOT_FOUND);
     }
 }
 
